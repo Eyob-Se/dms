@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  osrm:
+    image: osrm/osrm-backend
+    container_name: dm
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./:/data
+    command: osrm-routed --algorithm mld /data/dmu_campus.osrm
+    restart: unless-stopped
